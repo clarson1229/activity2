@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour 
 {
+	const string rightTriggerAxis = "SecondaryIndexTrigger";    //Input mapping for Oculus Touch. Would need remapped for Vive
+	const string leftTriggerAxis = "PrimaryIndexTrigger";       //Input mapping for Oculus Touch. Would need remapped for Vive
+
 	[SerializeField] bool startPaused = true;		//Should the game be paused to start?
 	[SerializeField] GameObject pauseScreen;		//A reference to the UI object that shows the paused screen
 	[SerializeField] LayerMask pauseCullingMask;	//A culling mask to limit what the camera can see when paused
@@ -30,7 +33,7 @@ public class PauseManager : MonoBehaviour
 	void Update () 
 	{
 		//Look for the player to press "Button2". If they do, toggle the paused state
-		if (Input.GetButtonDown ("Button2") || Input.GetButtonDown ("Fire2"))
+		if (Input.GetButtonDown ("SecondaryThumbstick") || Input.GetButtonDown ("Fire2"))
 			TogglePaused (!isPaused);
 	}
 
